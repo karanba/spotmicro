@@ -35,12 +35,13 @@ void setup()
   delay(10);
   spotMicroAI.setUp(spotPins);
   spotMicroAI.startPosition();
+  
 }
 
 void loop()
 {  
-  digitalWrite(LED_BUILTIN, HIGH);
-  delay(1000);
+  digitalWrite(LED_BUILTIN, HIGH); 
+  spotMicroAI.walk();
   digitalWrite(LED_BUILTIN, LOW);
-  delay(1000);
+
 }

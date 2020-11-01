@@ -6,15 +6,19 @@
 class Leg
 {
 private:
-    Joint elbow;
-    Joint shoulderFlextion;
-    Joint sholderAbduction;
+    int sf_init;
 
 public:
     Leg();
     Leg(Direction direction, int elbowStepPin, int shoulderFlextionStepPin, int sholderAbductionStepPin);
+    Joint elbow;
+    Joint shoulderFlextion;
+    Joint sholderAbduction;
     void startPosition();
     void stepForward();
+    void stepOrigin();
+    void stepUp();
+    void stepDown();
 };
 
 #endif

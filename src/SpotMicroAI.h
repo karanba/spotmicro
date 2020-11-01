@@ -16,6 +16,8 @@ class SpotMicroAI
         SpotMicroAI();
         void setUp(uint16_t pins[][3]);
         void startPosition();
+        void walk();
+        void march();
 };
 
 #endif
