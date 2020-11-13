@@ -19,6 +19,8 @@ public:
     void stepOrigin();
     void stepUp();
     void stepDown();
+    void pushUp();
+    void pushDown();
 };
 
 #endif

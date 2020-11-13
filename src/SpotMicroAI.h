@@ -18,6 +18,7 @@ class SpotMicroAI
         void startPosition();
         void walk();
         void march();
+        void pushUp();
 };
 
 #endif

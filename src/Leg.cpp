@@ -44,3 +44,15 @@ void Leg::stepOrigin()
     this->shoulderFlextion.rotate(this->sf_init);
     this->elbow.rotate(40);    
 }
+
+void Leg::pushUp()
+{
+    this->elbow.rotateTo(20,10);
+    this->shoulderFlextion.rotateTo(140,150);   
+}
+
+void Leg::pushDown()
+{
+    this->elbow.rotateTo(10,20);
+    this->shoulderFlextion.rotateTo(150,140);   
+}

@@ -41,7 +41,8 @@ void setup()
 void loop()
 {  
   digitalWrite(LED_BUILTIN, HIGH); 
-  spotMicroAI.walk();
+  spotMicroAI.march();
+
   digitalWrite(LED_BUILTIN, LOW);
 
 }

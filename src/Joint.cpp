@@ -40,6 +40,7 @@ void Joint::rotateTo(int baseAngle, int toAngle)
         for (int angle = baseAngle; angle < toAngle; angle++)
         {
             this->rotate(angle);
+            delay(100);
         }
     }
     else
@@ -47,6 +48,7 @@ void Joint::rotateTo(int baseAngle, int toAngle)
         for (int angle = toAngle; angle < baseAngle; angle++)
         {
             this->rotate(angle);
+            delay(100);
         }
     }
 }
