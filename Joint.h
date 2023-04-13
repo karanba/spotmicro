@@ -7,15 +7,14 @@
 #define USMIN 400     // This is the rounded 'minimum' microsecond length based on the minimum pulse of 150
 #define USMAX 2200    // This is the rounded 'maximum' microsecond length based on the maximum pulse of 600
 
-enum Direction
-{
-  DIRECTION_CW, // right joint
-  DIRECTION_CCW // left joint
+enum Direction {
+  DIRECTION_CW,  // right joint
+  DIRECTION_CCW  // left joint
 };
 
-class Joint
-{
+class Joint {
 private:
+  Adafruit_PWMServoDriver *driver;
   int servoNo;
   Direction direction;
   int minAllowedAngle = 0;
@@ -24,12 +23,12 @@ private:
   int leverageLength = 0;
   int currentAngle = 0;
 
-public:    
+public:
   Joint();
-  Joint(int servoNo, Direction direction, int minAllowedAngle, int maxAllowedAngle, int tuneDiffAngle, int leverageLength);
-  void rotate(Adafruit_PWMServoDriver pwm, int angle);
-  // void rotateTo(int baseAngle, int toAngle);
-  // void rotateSmooth(int toAngle);
+  Joint(Adafruit_PWMServoDriver *Driver, int servoNo, Direction direction, int minAllowedAngle, int maxAllowedAngle, int tuneDiffAngle, int leverageLength);
+  void rotate(int angle);
+  void rotateTo(int baseAngle, int toAngle);
+  void rotateSmooth(int toAngle);
 };
 
 #endif

@@ -1,18 +1,26 @@
 #include "Leg.h"
-#include "Joint.h"
 
-Leg::Leg(void)
-{
-}
+Leg ::Leg() {}
 
-Leg::Leg(Direction direction, int elbowStepPin, int shoulderFlextionStepPin, int sholderAbductionStepPin)
-{
-    this->sf_init = 165;
-    this->elbow_init_angle = 90;
-    this->sholderAbduction_init_angle = 90;
-    this->elbow = Joint(elbowStepPin, direction, 1, 121, 0, 0);
-    this->shoulderFlextion = Joint(shoulderFlextionStepPin, direction, 1, 120, 0, 0);
-    this->sholderAbduction = Joint(sholderAbductionStepPin, direction, 29, 61, 0, 0);
+Leg::Leg(Adafruit_PWMServoDriver *Driver, Direction direction, int elbowStepPin, int shoulderFlextionStepPin, int sholderAbductionStepPin) {
+  driver = Driver;
+
+  this->sf_init = 165;
+  this->elbow_init_angle = 90;
+  this->sholderAbduction_init_angle = 90;
+
+  int elbowTuneAngle = 0;
+  if (direction == DIRECTION_CCW) {
+    elbowTuneAngle = 90;
+  }
+  this->elbow = Joint(driver, elbowStepPin, direction, 1, 121, elbowTuneAngle, 0);
+
+  int soulderTuneAngle = 0;
+  if (direction == DIRECTION_CCW) {
+    soulderTuneAngle = 90;
+  }
+  this->shoulderFlextion = Joint(driver, shoulderFlextionStepPin, direction, 1, 120, soulderTuneAngle, 0);
+  this->sholderAbduction = Joint(driver, sholderAbductionStepPin, direction, 39, 56, 0, 0);
 }
 
 // void Leg::startPosition()
@@ -22,24 +30,29 @@ Leg::Leg(Direction direction, int elbowStepPin, int shoulderFlextionStepPin, int
 //     this->sholderAbduction.rotate(this->sholderAbduction_init_angle);
 // }
 
-// void Leg::stepUp()
-// {
-//     this->shoulderFlextion.rotate(155);    
-//     this->elbow.rotate(35);
-// }
+void Leg::stepA(int i) {
+  this->shoulderFlextion.rotate(10 - i);
+  this->elbow.rotate(60 + i);
+}
 
-// void Leg::stepDown()
-// {
-//     this->shoulderFlextion.rotate(this->sf_init);    
-//     this->elbow.rotate(40);
-// }
+void Leg::stepB(int i) {
+  this->shoulderFlextion.rotate(i);
+}
+
+void Leg::stepC(int i) {
+  this->elbow.rotate(70 - i);
+}
+
+void Leg::stepD(int i) {
+  this->shoulderFlextion.rotate(10-i);
+}
 
 // void Leg::down(){
-//   this->shoulderFlextion.rotate(130);    
+//   this->shoulderFlextion.rotate(130);
 // }
 
 // void Leg::up(){
-//   this->shoulderFlextion.rotate(150);    
+//   this->shoulderFlextion.rotate(150);
 // }
 
 
@@ -47,18 +60,18 @@ Leg::Leg(Direction direction, int elbowStepPin, int shoulderFlextionStepPin, int
 // {
 //     this->elbow.rotateSmooth(30);
 //     delay(1000);
-//     this->shoulderFlextion.rotateSmooth(130);    
+//     this->shoulderFlextion.rotateSmooth(130);
 //     delay(1000);
 //     this->elbow.rotateSmooth(60);
 //     delay(1000);
-//     this->shoulderFlextion.rotateSmooth(150);   
+//     this->shoulderFlextion.rotateSmooth(150);
 //     delay(1000);
 //     this->elbow.rotateSmooth(40);
 //     delay(1000);
-// } 
+// }
 
 // void Leg::stepOrigin()
-// {    
+// {
 //     this->shoulderFlextion.rotateSmooth(165);
-//     this->elbow.rotateSmooth(40);    
+//     this->elbow.rotateSmooth(40);
 // }
