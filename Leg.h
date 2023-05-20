@@ -11,7 +11,7 @@ private:
   int sholderAbduction_init_angle;
 public:
   Leg();
-  Leg(Adafruit_PWMServoDriver *Driver, Direction direction, int elbowStepPin, int shoulderFlextionStepPin, int sholderAbductionStepPin);
+  Leg(Adafruit_PWMServoDriver *Driver, Direction direction, int elbowStepPin, int shoulderFlextionStepPin, int sholderAbductionStepPin, int elbowFixAngle, int shoulderFixAngle, int abdFixAngle);
   Joint elbow;
   Joint shoulderFlextion;
   Joint sholderAbduction;

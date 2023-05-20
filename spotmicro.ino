@@ -5,6 +5,7 @@
 
 Adafruit_PWMServoDriver driver = Adafruit_PWMServoDriver();
 SpotMicroAI spotMicroAI = SpotMicroAI(&driver);
+char input;
 
 void setup() {
   Serial.begin(9600);
@@ -13,7 +14,11 @@ void setup() {
 }
 
 void loop() {
-
+  if (Serial.available()) {
+    input = Serial.read();
+    Serial.print("You typed: ");
+    Serial.println(input);
+  }
   // for (int i = 0; i <= 10; i++) {
 
   //   spotMicroAI.leftFrontLeg.elbow.rotate(70 + i);
@@ -22,26 +27,26 @@ void loop() {
   //   delay(100);
   // }
 
-  for (int i = 1; i <= 10; i++) {
-    spotMicroAI.leftFrontLeg.stepA(i);
-    spotMicroAI.rightBackLeg.stepA(i);
-    spotMicroAI.leftBackLeg.stepC(i);
-    spotMicroAI.rightFrontLeg.stepC(i);
-  }
+  // for (int i = 1; i <= 10; i++) {
+  //   spotMicroAI.leftFrontLeg.stepA(i);
+  //   spotMicroAI.rightBackLeg.stepA(i);
+  //   spotMicroAI.leftBackLeg.stepC(i);
+  //   spotMicroAI.rightFrontLeg.stepC(i);
+  // }
 
-  for (int i = 1; i <= 10; i++) {
-    spotMicroAI.leftFrontLeg.stepB(i);
-    spotMicroAI.rightBackLeg.stepB(i);
-    spotMicroAI.leftBackLeg.stepA(i);
-    spotMicroAI.rightFrontLeg.stepA(i);
-  }
+  // for (int i = 1; i <= 10; i++) {
+  //   spotMicroAI.leftFrontLeg.stepB(i);
+  //   spotMicroAI.rightBackLeg.stepB(i);
+  //   spotMicroAI.leftBackLeg.stepA(i);
+  //   spotMicroAI.rightFrontLeg.stepA(i);
+  // }
 
-  for (int i = 1; i <= 10; i++) {
-    spotMicroAI.leftFrontLeg.stepC(i);
-    spotMicroAI.rightBackLeg.stepC(i);
-    spotMicroAI.leftBackLeg.stepB(i);
-    spotMicroAI.rightFrontLeg.stepB(i);
-  }
+  // for (int i = 1; i <= 10; i++) {
+  //   spotMicroAI.leftFrontLeg.stepC(i);
+  //   spotMicroAI.rightBackLeg.stepC(i);
+  //   spotMicroAI.leftBackLeg.stepB(i);
+  //   spotMicroAI.rightFrontLeg.stepB(i);
+  // }
 
   //  for (int i = 1; i <= 10; i++) {
   //   spotMicroAI.leftFrontLeg.stepD(i);

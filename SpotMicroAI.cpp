@@ -14,30 +14,42 @@ void SpotMicroAI::setUp() {
                            DIRECTION_CCW,
                            LEFT_FRONT_ELBOW_PIN,
                            LEFT_FRONT_SHOULDER_PIN,
-                           LEFT_FRONT_A_PIN);
+                           LEFT_FRONT_A_PIN, 
+                           LEFT_FRONT_ELBOW_FA,
+                           LEFT_FRONT_SHOULDER_FA,
+                           LEFT_FRONT_A_FA);
 
   this->rightFrontLeg = Leg(driver,
                             DIRECTION_CW,
                             RIGHT_FRONT_ELBOW_PIN,
                             RIGHT_FRONT_SHOULDER_PIN,
-                            RIGHT_FRONT_A_PIN);
+                            RIGHT_FRONT_A_PIN,
+                            RIGHT_FRONT_ELBOW_FA,
+                            RIGHT_FRONT_SHOULDER_FA,
+                            RIGHT_FRONT_A_FA);
 
   this->leftBackLeg = Leg(driver,
                           DIRECTION_CCW,
                           LEFT_BACK_ELBOW_PIN,
                           LEFT_BACK_SHOULDER_PIN,
-                          LEFT_BACK_A_PIN);
+                          LEFT_BACK_A_PIN,
+                          LEFT_BACK_ELBOW_FA,
+                          LEFT_BACK_SHOULDER_FA,
+                          LEFT_BACK_A_FA);
 
   this->rightBackLeg = Leg(driver,
                            DIRECTION_CW,
                            RIGHT_BACK_ELBOW_PIN,
                            RIGHT_BACK_SHOULDER_PIN,
-                           RIGHT_BACK_A_PIN);
+                           RIGHT_BACK_A_PIN,
+                           RIGHT_BACK_ELBOW_FA,
+                           RIGHT_BACK_SHOULDER_FA,
+                           RIGHT_BACK_A_FA);
 }
 
 void SpotMicroAI::startPosition() {
   int elbow = 60;
-  int shoulder = 10;
+  int shoulder = 15;
   int abduction = 45;
 
 

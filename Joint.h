@@ -24,8 +24,9 @@ private:
   int currentAngle = 0;
 
 public:
+  int fixAngle;
   Joint();
-  Joint(Adafruit_PWMServoDriver *Driver, int servoNo, Direction direction, int minAllowedAngle, int maxAllowedAngle, int tuneDiffAngle, int leverageLength);
+  Joint(Adafruit_PWMServoDriver *Driver, int servoNo, Direction direction, int minAllowedAngle, int maxAllowedAngle, int tuneDiffAngle, int leverageLength, int fixAngle);
   void rotate(int angle);
   void rotateTo(int baseAngle, int toAngle);
   void rotateSmooth(int toAngle);

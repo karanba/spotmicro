@@ -3,7 +3,7 @@
 Joint::Joint() {
 }
 
-Joint::Joint(Adafruit_PWMServoDriver *Driver, int servoNo, Direction direction, int minAllowedAngle, int maxAllowedAngle, int tuneDiffAngle, int leverageLength) {
+Joint::Joint(Adafruit_PWMServoDriver *Driver, int servoNo, Direction direction, int minAllowedAngle, int maxAllowedAngle, int tuneDiffAngle, int leverageLength, int fixAngle) {
   driver = Driver;
   this->servoNo = servoNo;
   this->direction = direction;
@@ -11,13 +11,14 @@ Joint::Joint(Adafruit_PWMServoDriver *Driver, int servoNo, Direction direction, 
   this->maxAllowedAngle = maxAllowedAngle;
   this->tuneDiffAngle = tuneDiffAngle;
   this->leverageLength = leverageLength;
+  this->fixAngle = fixAngle;
 }
 
 void Joint::rotate(int angle) {
   Serial.println("rotate angle");
   Serial.println(angle);
   Serial.println(this->servoNo);
-
+  angle = angle - this->fixAngle;
   if (angle < this->minAllowedAngle || angle > this->maxAllowedAngle) {
     return;
   }
@@ -27,7 +28,7 @@ void Joint::rotate(int angle) {
   }
   uint16_t pulselength = map(angle, 0, 180, SERVOMIN, SERVOMAX);
   driver->setPWM(this->servoNo, 0, pulselength);
-  delay(10);
+  delay(5);
 }
 
 void Joint::rotateSmooth(int toAngle) {

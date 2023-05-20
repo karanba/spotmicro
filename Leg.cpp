@@ -2,7 +2,10 @@
 
 Leg ::Leg() {}
 
-Leg::Leg(Adafruit_PWMServoDriver *Driver, Direction direction, int elbowStepPin, int shoulderFlextionStepPin, int sholderAbductionStepPin) {
+Leg::Leg(Adafruit_PWMServoDriver *Driver,
+         Direction direction,
+         int elbowStepPin, int shoulderFlextionStepPin, int sholderAbductionStepPin,
+         int elbowFixAngle, int shoulderFixAngle, int abdFixAngle) {
   driver = Driver;
 
   this->sf_init = 165;
@@ -13,14 +16,14 @@ Leg::Leg(Adafruit_PWMServoDriver *Driver, Direction direction, int elbowStepPin,
   if (direction == DIRECTION_CCW) {
     elbowTuneAngle = 90;
   }
-  this->elbow = Joint(driver, elbowStepPin, direction, 1, 121, elbowTuneAngle, 0);
+  this->elbow = Joint(driver, elbowStepPin, direction, 1, 121, elbowTuneAngle, 0, elbowFixAngle);
 
   int soulderTuneAngle = 0;
   if (direction == DIRECTION_CCW) {
     soulderTuneAngle = 90;
   }
-  this->shoulderFlextion = Joint(driver, shoulderFlextionStepPin, direction, 1, 120, soulderTuneAngle, 0);
-  this->sholderAbduction = Joint(driver, sholderAbductionStepPin, direction, 39, 56, 0, 0);
+  this->shoulderFlextion = Joint(driver, shoulderFlextionStepPin, direction, 1, 120, soulderTuneAngle, 0, shoulderFixAngle);
+  this->sholderAbduction = Joint(driver, sholderAbductionStepPin, direction, 39, 56, 0, 0, abdFixAngle);
 }
 
 // void Leg::startPosition()
@@ -30,22 +33,22 @@ Leg::Leg(Adafruit_PWMServoDriver *Driver, Direction direction, int elbowStepPin,
 //     this->sholderAbduction.rotate(this->sholderAbduction_init_angle);
 // }
 
-void Leg::stepA(int i) {
-  this->shoulderFlextion.rotate(10 - i);
-  this->elbow.rotate(60 + i);
-}
+// void Leg::stepA(int i) {
+//   this->shoulderFlextion.rotate(15 - i);
+//   this->elbow.rotate(60 + i);
+// }
 
-void Leg::stepB(int i) {
-  this->shoulderFlextion.rotate(i);
-}
+// void Leg::stepB(int i) {
+//   this->shoulderFlextion.rotate(i+5);
+// }
 
-void Leg::stepC(int i) {
-  this->elbow.rotate(70 - i);
-}
+// void Leg::stepC(int i) {
+//   this->elbow.rotate(70 - i);
+// }
 
-void Leg::stepD(int i) {
-  this->shoulderFlextion.rotate(10-i);
-}
+// void Leg::stepD(int i) {
+//   this->shoulderFlextion.rotate(15 - i);
+// }
 
 // void Leg::down(){
 //   this->shoulderFlextion.rotate(130);

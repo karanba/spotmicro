@@ -6,6 +6,8 @@
 
 #include "Leg.h"
 
+// pins 
+
 #define LEFT_FRONT_ELBOW_PIN 0
 #define RIGHT_FRONT_ELBOW_PIN 1
 #define LEFT_BACK_ELBOW_PIN 2
@@ -20,6 +22,25 @@
 #define RIGHT_FRONT_A_PIN 9
 #define LEFT_BACK_A_PIN 10
 #define RIGHT_BACK_A_PIN 11
+
+// fix angles
+
+#define LEFT_FRONT_ELBOW_FA 0
+#define RIGHT_FRONT_ELBOW_FA 0
+#define LEFT_BACK_ELBOW_FA 0
+#define RIGHT_BACK_ELBOW_FA 0
+
+#define LEFT_FRONT_SHOULDER_FA 0
+#define RIGHT_FRONT_SHOULDER_FA 0
+#define LEFT_BACK_SHOULDER_FA 7
+#define RIGHT_BACK_SHOULDER_FA -7
+
+#define LEFT_FRONT_A_FA 0
+#define RIGHT_FRONT_A_FA -2
+#define LEFT_BACK_A_FA 0
+#define RIGHT_BACK_A_FA 0
+
+
 
 
 class SpotMicroAI {
