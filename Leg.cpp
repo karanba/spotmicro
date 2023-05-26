@@ -33,22 +33,22 @@ Leg::Leg(Adafruit_PWMServoDriver *Driver,
 //     this->sholderAbduction.rotate(this->sholderAbduction_init_angle);
 // }
 
-// void Leg::stepA(int i) {
-//   this->shoulderFlextion.rotate(15 - i);
-//   this->elbow.rotate(60 + i);
-// }
+void Leg::stepA(int i) {
+  this->shoulderFlextion.rotate(15 - i);
+  this->elbow.rotate(60 + i);
+}
 
-// void Leg::stepB(int i) {
-//   this->shoulderFlextion.rotate(i+5);
-// }
+void Leg::stepB(int i) {
+  this->shoulderFlextion.rotate(i+5);
+}
 
-// void Leg::stepC(int i) {
-//   this->elbow.rotate(70 - i);
-// }
+void Leg::stepC(int i) {
+  this->elbow.rotate(70 - i);
+}
 
-// void Leg::stepD(int i) {
-//   this->shoulderFlextion.rotate(15 - i);
-// }
+void Leg::stepD(int i) {
+  this->shoulderFlextion.rotate(15 - i);
+}
 
 // void Leg::down(){
 //   this->shoulderFlextion.rotate(130);

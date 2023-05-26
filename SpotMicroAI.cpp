@@ -49,7 +49,7 @@ void SpotMicroAI::setUp() {
 
 void SpotMicroAI::startPosition() {
   int elbow = 60;
-  int shoulder = 15;
+  int shoulder = 20;
   int abduction = 45;
 
 
